@@ -28,8 +28,9 @@ const app = {
     getUserInfo({ commit }, payload) {
       api
         .fetchUserInfo(payload)
-        .then((res) => {
-
+        .then((response) => {
+          console.log('res = ', response);
+          commit('SET_USER_INFO', response.result);
         })
         .catch((error) => {
 

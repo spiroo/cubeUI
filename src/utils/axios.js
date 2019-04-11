@@ -17,7 +17,7 @@ Axios.interceptors.request.use(
   config => {
     // 防重复提交
     if (store.state.token) {
-      // config.headers["Authorization"] = "Bearer " + store.state.token;
+      // config.headers[Authorization] = Bearer  + store.state.token;
     }
 
     return config;
@@ -44,13 +44,13 @@ Axios.interceptors.response.use(
     //断网处理或者请求超时
     if (!error.response) {
       //请求超时
-      if (error.message.includes("timeout")) {
-        console.log("超时了");
-        // messages("error", "请求超时，请检查互联网连接");
+      if (error.message.includes(timeout)) {
+        console.log(超时了);
+        // messages(error, 请求超时，请检查互联网连接);
       } else {
         //断网，可以展示断网组件
-        console.log("断网了");
-        // messages("error", "请检查网络是否已连接");
+        console.log(断网了);
+        // messages(error, 请检查网络是否已连接);
       }
       return;
     }
@@ -58,17 +58,17 @@ Axios.interceptors.response.use(
     const status = error.response.status;
     switch (status) {
       case 500:
-        // messages("error", "服务器内部错误");
+        // messages(error, 服务器内部错误);
         break;
       case 404:
-        // messages("error",  "未找到远程服务器");
+        // messages(error,  未找到远程服务器);
         break;
       case 401:
-        // messages("warning", "用户登陆过期，请重新登陆");
-        // localStorage.removeItem("token");
+        // messages(warning, 用户登陆过期，请重新登陆);
+        // localStorage.removeItem(token);
         // setTimeout(() => {
         //   router.replace({
-        //     path: "/login",
+        //     path: /login,
         //     query: {
         //       redirect: router.currentRoute.fullPath
         //     }
@@ -76,10 +76,10 @@ Axios.interceptors.response.use(
         // }, 1000);
         break;
       case 400:
-        // messages("error", "数据异常");
+        // messages(error, 数据异常);
         break;
       default:
-        // messages("error", error.response.data.message);
+        // messages(error, error.response.data.message);
     }
     return Promise.reject(error);
   }
@@ -92,10 +92,7 @@ Axios.interceptors.response.use(
  */
 export function get(url, params) {
   return new Promise((resolve, reject) => {
-    Axios
-      .get(url, {
-        params
-      })
+    Axios.get(url, { params })
       .then(res => {
         resolve(res);
       })
@@ -112,8 +109,7 @@ export function get(url, params) {
  */
 export function post(url, params) {
   return new Promise((resolve, reject) => {
-    Axios
-      .post(url, params)
+    Axios.post(url, params)
       .then(res => {
         resolve(res);
       })

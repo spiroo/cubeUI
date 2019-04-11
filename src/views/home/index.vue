@@ -1,5 +1,6 @@
 <template>
   <div class="scroll-list-wrap" :style="{ height: wrapHeight + 'px' }">
+    <h2>{{ userInfo.vcOperatorName || 'DK' }}</h2>
     <cube-scroll
       ref="scroll"
       :data="items"
@@ -30,11 +31,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import goodsData from '@/store/goods-list.json';
+
 let _foods = [];
 goodsData.goods.forEach(item => {
   _foods = _foods.concat(item.foods);
 });
+
 export default {
   name: 'home',
   data() {
@@ -51,10 +55,8 @@ export default {
       pullUpLoadNoMoreTxt: '暂无更多数据',
     };
   },
-  mounted() {
-    this.wrapHeight = this.$calcWrapHeight();
-  },
   computed: {
+    ...mapGetters(['userInfo', 'requestLoading']),
     options() {
       return {
         pullDownRefresh: this.pullDownRefreshObj,
@@ -80,6 +82,11 @@ export default {
         }
       } : false
     }
+  },
+  mounted() {
+    this.wrapHeight = this.$calcWrapHeight();
+    // this.$store.dispatch('getUserInfo', { userName: '13552498198' });
+    console.log(this.userInfo);
   },
   methods: {
     onPullingDown() {

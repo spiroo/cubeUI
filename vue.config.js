@@ -1,4 +1,5 @@
 const path = require('path');
+const pagesConfig = require('./page.config.js');
 
 function resolve(dir) {
   return path.join(__dirname, './', dir);
@@ -6,6 +7,7 @@ function resolve(dir) {
 
 module.exports = {
   baseUrl: '/',
+  pages: pagesConfig,
 
   // webpack 链接 API，用于生成和修改 webapck 配置
   // https://github.com/mozilla-neutrino/webpack-chain

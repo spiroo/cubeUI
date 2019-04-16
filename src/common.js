@@ -1,13 +1,12 @@
 import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import './cube-ui';
+import '@/cube-ui';
 import 'amfe-flexible';
 import '@/icons'; // icon
 
 import common from '@/utils/common';
 import filters from '@/utils/filters'; // 全局过滤器
+
+import '@/utils/permission';
 
 Vue.config.productionTip = false;
 
@@ -20,9 +19,3 @@ for (let key in filters) {
 }
 
 Vue.use(common);
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app');

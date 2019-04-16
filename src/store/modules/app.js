@@ -3,7 +3,9 @@ import api from '@/api/app';
 const app = {
   state: {
     requestLoading: 0,
-    userInfo: {}
+    userInfo: {},
+    title: '',
+    header: {}
   },
   mutations: {
     SET_LOADING: (state, status) => {
@@ -18,6 +20,15 @@ const app = {
       state.userInfo = {
         ...state.userInfo,
         ...user
+      };
+    },
+    SET_APP_TITLE: (state, title) => {
+      state.title = title;
+    },
+    SET_APP_HEADER: (state, payload) => {
+      state.header = {
+        ...state.header,
+        ...payload
       };
     }
   },

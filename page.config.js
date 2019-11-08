@@ -1,5 +1,6 @@
 const glob = require("glob");
 const pageConfig = require("./src/pages/page.js");
+let entries;
 
 try {
   entries = glob('src/pages/*/main.js', { sync: true });

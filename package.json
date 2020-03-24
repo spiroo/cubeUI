@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "core-js": "^2.6.5",
     "cube-ui": "~1.12.36",
     "date-fns": "^1.30.1",
